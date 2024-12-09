@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "doc_scraper_fc"
+version = "0.1.0"
+description = "A documentation scraper using Firecrawl for enhanced web scraping capabilities"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = ["documentation", "scraper", "firecrawl", "markdown"]
+authors = [
+    { name = "Igor Lessio", email = "igor@aiflow.ml" }
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "firecrawl>=0.1.0",
+    "python-dotenv>=0.19.0",
+    "pyyaml>=6.0.1",
+    "rich>=13.0.0",
+    "typer>=0.9.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=22.0.0",
+    "isort>=5.0.0",
+    "mypy>=1.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/AIFlowML/doc_4_cursor"
+Repository = "https://github.com/AIFlowML/doc_4_cursor.git"
+Issues = "https://github.com/AIFlowML/doc_4_cursor/issues"
+
+[project.scripts]
+doc-scraper-fc = "doc_scraper_fc.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[tool.black]
+line-length = 100
+target-version = ["py38"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+multi_line_output = 3 

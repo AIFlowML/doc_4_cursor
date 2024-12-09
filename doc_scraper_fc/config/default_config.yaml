@@ -1,0 +1,90 @@
+# Default configuration for doc-scraper-fc
+
+# Scraping settings
+scraping:
+  api_key: ${FIRECRAWL_API_KEY}
+  base_url: "https://docs.firecrawl.dev"
+  max_pages: 10
+  max_depth: 2
+  formats:
+    - markdown
+  options:
+    onlyMainContent: true
+    removeBase64Images: true
+
+# Content extraction
+extraction:
+  prompt: |
+    Extract and structure the documentation content with:
+    1. Clear hierarchical organization (sections, subsections)
+    2. Code examples with language tags
+    3. Key concepts and definitions
+    4. Step-by-step instructions or tutorials
+    5. Important notes and warnings
+    6. API references and parameters
+    7. Cross-references and dependencies
+  schema:
+    title: "string"
+    description: "string"
+    sections:
+      - heading: "string"
+        content: "string"
+        code_examples:
+          - language: "string"
+            code: "string"
+            description: "string"
+        key_concepts: ["string"]
+        notes: ["string"]
+    api_reference:
+      endpoints:
+        - name: "string"
+          description: "string"
+          parameters:
+            - name: "string"
+              type: "string"
+              description: "string"
+              required: "boolean"
+    metadata:
+      source_url: "string"
+      last_updated: "string"
+  clean_patterns: []
+  selectors:
+    title: ["h1", "title"]
+    content: ["article", ".markdown-body", "main .content", ".docs-content"]
+    code_blocks: ["pre code", ".highlight", ".code-block"]
+    metadata: ["meta[name='description']", ".last-updated", ".doc-metadata"]
+
+# URL patterns
+patterns:
+  include: 
+    - "/docs/"
+    - "/guide/"
+    - "/api/"
+    - "/reference/"
+    - "/concepts/"
+    - "/examples/"
+  exclude:
+    - "/blog/"
+    - "/changelog/"
+    - "/community/"
+    - "/pricing/"
+
+# Output settings
+output:
+  directory: "scraped_docs"
+  save_individual_pages: true  # Save each page as a separate file
+  save_merged_file: true      # Save all content in a single merged file
+  merged_file_prefix: "firecrawl_docs"  # Prefix for the merged file
+  file_format: "markdown"     # Output format (markdown, html, etc)
+  add_metadata: true         # Include metadata in the output files
+  add_timestamps: true       # Add timestamps to filenames and content
+
+# Logging settings
+logging:
+  file:
+    level: "DEBUG"
+    max_size: 1048576  # 1MB
+    backup_count: 5
+  console:
+    level: "INFO"
+    show_time: false 
