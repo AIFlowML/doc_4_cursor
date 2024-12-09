@@ -1,0 +1,14 @@
+LICENSE
+README.md
+setup.py
+doc_scraper/__init__.py
+doc_scraper/cli.py
+doc_scraper/scraper.py
+doc_scraper.egg-info/PKG-INFO
+doc_scraper.egg-info/SOURCES.txt
+doc_scraper.egg-info/dependency_links.txt
+doc_scraper.egg-info/entry_points.txt
+doc_scraper.egg-info/requires.txt
+doc_scraper.egg-info/top_level.txt
+doc_scraper/config/sites_config.yaml
+tests/test_scraper.py

@@ -1,0 +1,54 @@
+default:
+  base_url: "https://docs.example.com"
+  save_dir: "./scraped_docs"
+  max_workers: 5
+  timeout: 10
+  retry_attempts: 3
+  delay_between_requests: 1.0
+
+phidata:
+  selectors:
+    content: [
+      "article",
+      ".markdown-body",
+      "#content-wrapper",
+      ".docs-content",
+      "main .content",
+      "#main-content"
+    ]
+    title: ["h1", "title"]
+    description: "meta[name='description']"
+    last_updated: ".last-updated"
+  include_patterns:
+    - "/docs/"
+    - "/agents/"
+    - "/guides/"
+    - "/tutorials/"
+    - "/reference/"
+    - "/tools/"
+    - "/models/"
+  exclude_patterns:
+    - "/api/"
+    - "/changelog/"
+    - "/search/"
+    - "/assets/"
+    - "/static/"
+    - "/versions/"
+    - "/blog/"
+    - "/community/"
+  clean_patterns:
+    - "regex:\\^Table of Contents"
+    - "regex:\\^On this page"
+    - "regex:\\^Share this page"
+    - "regex:\\^Last modified"
+    - "regex:\\^Edit this page"
+    - "regex:\\^\\d+\\s*min read"
+    - "regex:\\^Previous\\s+Next"
+    - "xpath://div[@class='sidebar']"
+    - "xpath://nav"
+    - "xpath://footer"
+    - "xpath://div[contains(@class, 'breadcrumb')]"
+    - "xpath://div[contains(@class, 'pagination')]"
+    - "xpath://div[contains(@class, 'toc')]"
+    - "xpath://div[contains(@class, 'edit-meta')]"
+    - "xpath://div[contains(@class, 'last-updated')]" 

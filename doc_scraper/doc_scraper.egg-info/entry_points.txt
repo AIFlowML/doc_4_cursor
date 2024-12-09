@@ -1,0 +1,2 @@
+[console_scripts]
+doc-scraper = doc_scraper.cli:app
