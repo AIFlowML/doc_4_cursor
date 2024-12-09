@@ -1,5 +1,9 @@
 # Documentation Scraping Tools
 
+<div align="center">
+  <img src="assets/eve_large.png" alt="EVE AI Documentation Scraper" width="600"/>
+</div>
+
 This repository contains a collection of tools for scraping and processing documentation from various sources.
 
 ## Packages
